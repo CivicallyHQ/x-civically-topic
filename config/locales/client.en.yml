@@ -1,0 +1,6 @@
+en:
+  js:
+    suggested_topics:
+      title: "Read Next"
+    topic:
+      read_more_in_category_simple: "Want to read more? Browse other topics in {{catLink}}"

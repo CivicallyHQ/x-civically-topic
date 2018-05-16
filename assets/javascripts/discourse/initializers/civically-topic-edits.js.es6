@@ -1,4 +1,7 @@
 import { withPluginApi } from 'discourse/lib/plugin-api';
+import { default as computed } from 'ember-addons/ember-computed-decorators';
+import { categoryBadgeHTML } from 'discourse/helpers/category-link';
+import { iconHTML } from 'discourse-common/lib/icon-library';
 
 export default {
   name: 'civically-topic-edits',
@@ -7,6 +10,22 @@ export default {
       api.modifyClass('component:topic-timer-info', {
         classNameBindings: ['executeAt::empty']
       });
+
+      api.modifyClass('component:suggested-topics', {
+        @computed('topic')
+        browseMoreMessage(topic) {
+          if (topic.get('isPrivateMessage')) { return; }
+
+          const category = topic.get('category');
+          if (!category) return;
+
+          let catLink = categoryBadgeHTML(category);
+
+          return I18n.t("topic.read_more_in_category_simple", {
+            catLink
+          });
+        }
+      })
     });
   }
 };
