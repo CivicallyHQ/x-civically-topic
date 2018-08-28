@@ -1,7 +1,6 @@
 import { withPluginApi } from 'discourse/lib/plugin-api';
 import { default as computed } from 'ember-addons/ember-computed-decorators';
 import { categoryBadgeHTML } from 'discourse/helpers/category-link';
-import { iconHTML } from 'discourse-common/lib/icon-library';
 
 export default {
   name: 'civically-topic-edits',
@@ -25,7 +24,7 @@ export default {
             catLink
           });
         }
-      })
+      });
     });
   }
 };
